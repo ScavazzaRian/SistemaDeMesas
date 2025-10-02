@@ -13,11 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        //Descomentar codigo caso queira usar o db:seed para popular a tabela user
+        // $this->call([
+        //     UserSeeder::class,
+        // ]);
     }
 }

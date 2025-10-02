@@ -1,0 +1,130 @@
+.login-section {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.login-side {
+  background-color: #ffffff;
+  box-shadow: 2px 0 20px rgba(93, 21, 21, 0.1);
+}
+
+.image-side {
+  background: linear-gradient(135deg, #5D1515 0%, #8B2020 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.image-side::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+.image-side img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.image-content {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-primary-custom {
+  background: linear-gradient(135deg, #5D1515 0%, #8B2020 100%);
+  border: none;
+  color: white;
+  padding: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background: linear-gradient(135deg, #4A1111 0%, #6D1818 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(93, 21, 21, 0.3);
+}
+
+.btn-outline-custom {
+  border: 2px solid #5D1515;
+  color: #5D1515;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+  background: #5D1515;
+  color: white;
+}
+
+.form-control:focus {
+  border-color: #5D1515;
+  box-shadow: 0 0 0 0.2rem rgba(93, 21, 21, 0.25);
+}
+
+.logo-container {
+  margin-bottom: 2rem;
+}
+
+.logo-container img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.brand-title {
+  color: #5D1515;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-top: 1rem;
+}
+
+.link-custom {
+  color: #5D1515;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.link-custom:hover {
+  color: #8B2020;
+  text-decoration: underline;
+}
+
+.welcome-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 991px) {
+  .image-side {
+    background: #5D1515;
+    min-height: 300px;
+  }
+  
+  .login-side {
+    box-shadow: none;
+  }
+}
+
+@media (min-width: 992px) {
+  .login-container {
+    padding: 3rem 2rem;
+  }
+}
