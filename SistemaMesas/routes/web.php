@@ -2,13 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\HomeController;
 
 
 //Rota de login
 //Guest -> caso o usuário já esteja autenticado ele redireciona por padrao para o endereco /home
 Route::middleware('guest')->group(function () {
     Route::get('/login', [UsersController::class, 'showLogin'])->name('login');
-    Route::post('/login', [UsersController::class, 'login'])->name('login');
+    Route::post('/login', [UsersController::class, 'login'])->name('login.post');
 });
 
 //Rota de logout
@@ -17,9 +19,7 @@ Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
 //Rota principal do site
 Route::prefix('/home')->middleware('auth')->group(function(){
 
-    Route::get('/', function(){
-        return 'Oi tudo bom';
-    });
+    Route::get('/', [HomeController::class, 'showHome'])->name('home');
 
     Route::prefix('/mesas')->group(function(){
         Route::get('/', function(){
@@ -28,9 +28,7 @@ Route::prefix('/home')->middleware('auth')->group(function(){
     });
 
     Route::prefix('/produtos')->group(function(){
-        Route::get('/', function(){
-            return 'CRUD produtos';
-        });
+        Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
     });
 
     Route::prefix('/marmitas')->group(function(){

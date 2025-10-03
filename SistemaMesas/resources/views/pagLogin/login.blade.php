@@ -11,7 +11,7 @@
                     <img src="{{ asset('img/chef.png') }}" alt="Cheff System Logo" style="width: 270px; height: 270px;">
                     <h1 class="brand-title">Cheff System</h1>
                 </div>
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login.post') }}">
                     @csrf
                     <div class="mb-4">
                         <label class="form-label fw-semibold" for="emailInput">Email</label>
