@@ -22,7 +22,9 @@
         <div class="mt-3 d-flex gap-2">
             <input type="text" class="form-control" placeholder="Pesquisar por nome de produtos...">
             <button class="btn btn-success" style="white-space: nowrap;">
-                <i class="fas fa-plus"></i> Cadastrar
+                <a href="{{ route('produtos.create') }}" class="btn btn-success" style="white-space: nowrap;">
+                    <i class="fas fa-plus"></i> Cadastrar
+                </a>
             </button>
         </div>
     </div>
