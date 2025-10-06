@@ -29,7 +29,8 @@ Route::prefix('/home')->middleware('auth')->group(function(){
 
     Route::prefix('/produtos')->group(function(){
         Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
-        Route::get('/create')->name('produtos.create');
+        Route::get('/create', [ProdutosController::class, 'showCadastro'])->name('produtos.create');
+        Route::post('/create', [ProdutosController::class, 'create'])->name('produto.create');
         Route::delete('/{id}/delete', [ProdutosController::class, 'destroy'])->name('produtos.destroy');
     });
 
