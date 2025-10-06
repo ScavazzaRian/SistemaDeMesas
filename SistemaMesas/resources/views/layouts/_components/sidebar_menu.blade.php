@@ -77,7 +77,7 @@
             </ul>
 
             <!-- Footer -->
-            <form method="POST" action="{{ route('logout') }}" id="logout-form" style="display: none;">
+            <form method="POST" action="{{ route('logout.post') }}" id="logout-form" style="display: none;">
                 @csrf
             </form>
 

@@ -14,7 +14,7 @@ Route::middleware('guest')->group(function () {
 });
 
 //Rota de logout
-Route::post('/logout', [UsersController::class, 'logout'])->name('logout');
+Route::post('/logout', [UsersController::class, 'logout'])->name('logout.post');
 
 //Rota principal do site
 Route::prefix('/home')->middleware('auth')->group(function(){
@@ -29,6 +29,8 @@ Route::prefix('/home')->middleware('auth')->group(function(){
 
     Route::prefix('/produtos')->group(function(){
         Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
+        Route::get('/create')->name('produtos.create');
+        Route::delete('/{id}/delete', [ProdutosController::class, 'destroy'])->name('produtos.destroy');
     });
 
     Route::prefix('/marmitas')->group(function(){
