@@ -46,3 +46,5 @@ Route::prefix('/home')->middleware('auth')->group(function(){
     });
 
 });
+
+//teste
