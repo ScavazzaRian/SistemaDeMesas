@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //Descomentar codigo caso queira usar o db:seed para popular a tabela user e produto
-        // $this->call([
-        //     UserSeeder::class,
-        //     ProdutosSeeder::class,
-        // ]);
+        $this->call([
+            UserSeeder::class,
+            //ProdutosSeeder::class,
+        ]);
     }
 }

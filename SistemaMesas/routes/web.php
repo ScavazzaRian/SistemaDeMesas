@@ -4,7 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
+use Illuminate\Routing\RouteRegistrar;
 
+//Rota inicial, Primeira pagina quando o cliente entra no site.
+Route::get('/', [IndexController::class, 'showIndex']) ->name('index');
 
 //Rota de login
 //Guest -> caso o usuário já esteja autenticado ele redireciona por padrao para o endereco /home
