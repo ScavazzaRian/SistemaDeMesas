@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+    background: linear-gradient(135deg, #5D1515 0%, #4A1111 50%, #8B2020 100%);
+    color: white;
+    text-align: center;
+    padding: 7rem 2rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    opacity: 0.9;
+}
+
+/* === BOTÕES === */
+.btn-start-modern {
+    background: linear-gradient(90deg, #5D1515, #8B2020);
+    color: #fff;
+    font-weight: 600;
+    padding: 0.8rem 2.2rem;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(93, 21, 21, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-start-modern::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: all 0.4s ease;
+}
+
+.btn-start-modern:hover::before {
+    left: 100%;
+}
+
+.btn-start-modern:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(139, 32, 32, 0.5);
+}
+
+
+/* =========================
+   CARDS
+========================= */
+.features {
+    padding: 4rem 2rem;
+}
+
+.features .card {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(93, 21, 21, 0.15);
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.features .card:hover {
+    transform: translateY(-8px);
+}
+
+.features .card h5 {
+    color: #5D1515;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.features .card p {
+    color: #444;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+.main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main > .hero,
+.main > .features {
+    flex: 1;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .features .card {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
