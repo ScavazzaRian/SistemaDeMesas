@@ -13,7 +13,7 @@ Route::get('/', [IndexController::class, 'showIndex']) ->name('index');
 
 //Rota para assinar o site
 // Rota que ira receber a api do mercadopago
-Route::get('/assinar', [AssinaturaController::class, 'showAssinatura'])->name('assinatura');
+Route::get('/assinatura', [AssinaturaController::class, 'showAssinatura'])->name('assinatura');
 
 //Rota de login
 //Guest -> caso o usuário já esteja autenticado ele redireciona por padrao para o endereco /home
