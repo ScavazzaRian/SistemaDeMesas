@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssinaturaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProdutosController;
@@ -9,6 +10,10 @@ use Illuminate\Routing\RouteRegistrar;
 
 //Rota inicial, Primeira pagina quando o cliente entra no site.
 Route::get('/', [IndexController::class, 'showIndex']) ->name('index');
+
+//Rota para assinar o site
+// Rota que ira receber a api do mercadopago
+Route::get('/assinar', [AssinaturaController::class, 'showAssinatura'])->name('assinatura');
 
 //Rota de login
 //Guest -> caso o usuário já esteja autenticado ele redireciona por padrao para o endereco /home
