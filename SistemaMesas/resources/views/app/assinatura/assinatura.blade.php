@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,11 +14,21 @@
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="{{ asset('css/styleAssinatura.css') }}">
 </head>
+
 <body>
     <div class="assinatura-wrapper">
         <div class="center-box">
-            <h2>Teste</h2>
+            <h2>Confirme sua Assinatura</h2>
+            <p>Verifique suas informações e confirme sua assinatura para continuar usando o Cheff System.</p>
+
+            <div class="button-group">
+                <button class="btn-confirmar">Confirmar</button>
+                <a href="{{ route('login') }}" class="btn-conta btn">
+                    Já tem conta? <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
