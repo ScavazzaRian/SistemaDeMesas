@@ -5,7 +5,7 @@ body, html {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: #5D1515; /* cor de fundo da página */
+    background-color: #5D1515;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,23 +20,73 @@ body, html {
 }
 
 .center-box {
-    background-color: #fff; /* cor do quadrado */
-    padding: 5rem 4rem; /* maior espaço interno */
+    background-color: #fff;
+    padding: 5rem 4rem;
     border-radius: 25px;
     box-shadow: 0 12px 35px rgba(0,0,0,0.35);
     text-align: center;
-    min-width: 1000px; /* largura maior */
-    width: 90%; /* ocupa boa parte da tela em telas menores */
-    min-height: 500px; /* altura mínima maior */
+    min-width: 1000px;
+    width: 90%;
+    min-height: 500px;
+
+    /* Alinhamento vertical */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.center-box h2 {
+/* Texto */
+.conteudo h2 {
     margin-bottom: 1.5rem;
     color: #5D1515;
     font-size: 2.5rem;
 }
 
-.center-box p {
+.conteudo p {
     color: #333;
     font-size: 1.2rem;
+}
+
+/* Botões */
+.button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.btn-confirmar,
+.btn-conta {
+    padding: 0.8rem 2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+/* Botão Confirmar */
+.btn-confirmar {
+    background-color: #5D1515;
+    color: #fff;
+    border: none;
+}
+
+.btn-confirmar:hover {
+    background-color: #7a1c1c;
+    transform: scale(1.03);
+}
+
+/* Botão Já tem conta */
+.btn-conta {
+    background-color: transparent;
+    color: #5D1515;
+    border: 2px solid #5D1515;
+}
+
+.btn-conta:hover {
+    background-color: #5D1515;
+    color: #fff;
+    transform: scale(1.03);
 }
