@@ -7,12 +7,29 @@ use Illuminate\Http\Request;
 class ProdutosController extends Controller
 {
     public function showProdutos(){
-        $produtos = Produto::all();
+        $produtos = Produto::orderBy('id', 'asc')->get();
         return view('app.produtos.produtos', compact('produtos'));
     }
 
     public function showCadastro(){
         return view('app.produtos.produtos_create');
+    }
+
+    public function showUpdate(Produto $produto){
+        return view('app.produtos.produtos_update', compact('produto'));
+    }
+
+    public function update(Request $request, Produto $produto){
+        $validate = $request->validate([
+            'nome'         => 'required|string|max:255',
+            'categoria'    => 'required|in:bebidas,pratos,self-service,doces,diversos',
+            'preco_compra' => 'nullable|numeric|min:0', 
+            'preco_venda'  => 'required|numeric|min:0',
+            'quantidade'   => 'required|integer|min:0',
+        ]);
+
+        $produto->update($validate);
+        return redirect()->route('produtos');
     }
 
     public function create(Request $request){

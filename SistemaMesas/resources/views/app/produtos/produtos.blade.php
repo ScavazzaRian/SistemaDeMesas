@@ -57,7 +57,9 @@
                                 <div class="d-flex gap-2">
                                     <!-- Botão Editar -->
                                     <button class="btn btn-sm" style="background-color: #f39c12; color: white;" title="Editar">
-                                            <i class="fas fa-edit"></i>
+                                            <a href="{{route('produtos.update', $produto)}}" style="color: inherit; text-decoration: none;">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
                                     </button>
                                     
                                     <!-- Botão Deletar -->

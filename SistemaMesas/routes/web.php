@@ -40,6 +40,8 @@ Route::prefix('/home')->middleware('auth')->group(function(){
         Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
         Route::get('/create', [ProdutosController::class, 'showCadastro'])->name('produtos.create');
         Route::post('/create', [ProdutosController::class, 'create'])->name('produto.create');
+        Route::get('/{produto}/update', [ProdutosController::class, 'showUpdate'])->name('produtos.update');
+        Route::put('/{produto}/update', [ProdutosController::class, 'update'])->name('produto.update');
         Route::delete('/{id}/delete', [ProdutosController::class, 'destroy'])->name('produtos.destroy');
     });
 

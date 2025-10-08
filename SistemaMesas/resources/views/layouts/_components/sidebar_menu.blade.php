@@ -24,44 +24,49 @@
             <!-- Menu Navigation -->
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link active">
+                    <a href="{{ route('home') }}" class="sidebar-link {{ request()->routeIs('home') ? 'active' : '' }}">
                         <i class="fas fa-utensils"></i>
                         <span>Mesas</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link {{ request()->routeIs('marmitas') ? 'active' : '' }}">
                         <i class="fas fa-box"></i>
                         <span>Marmitas</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('produtos') }}" class="sidebar-link">
+                    <a href="{{ route('produtos') }}"
+                        class="sidebar-link {{ request()->routeIs('produtos*') ? 'active' : '' }}">
                         <i class="fas fa-shopping-cart"></i>
                         <span>Produtos</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link {{ request()->routeIs('reservas') ? 'active' : '' }}">
                         <i class="fas fa-calendar-alt"></i>
                         <span>Reservas</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#relatorios" aria-expanded="false" aria-controls="relatorios">
+                    <a href="#"
+                        class="sidebar-link has-dropdown collapsed {{ request()->routeIs('relatorios*') ? 'active' : '' }}"
+                        data-bs-toggle="collapse" data-bs-target="#relatorios" aria-expanded="false"
+                        aria-controls="relatorios">
                         <i class="fas fa-chart-bar"></i>
                         <span>Relatórios</span>
                     </a>
                     <ul id="relatorios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
+                            <a href="#"
+                                class="sidebar-link {{ request()->routeIs('relatorios.vendas') ? 'active' : '' }}">
                                 <i class="fas fa-dollar-sign"></i>
                                 Vendas
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">
+                            <a href="#"
+                                class="sidebar-link {{ request()->routeIs('relatorios.estoque') ? 'active' : '' }}">
                                 <i class="fas fa-warehouse"></i>
                                 Estoque
                             </a>
@@ -69,7 +74,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link {{ request()->routeIs('configuracoes') ? 'active' : '' }}">
                         <i class="fas fa-cog"></i>
                         <span>Configurações</span>
                     </a>
