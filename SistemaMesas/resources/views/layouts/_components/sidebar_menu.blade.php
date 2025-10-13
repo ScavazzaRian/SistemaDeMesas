@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->routeIs('marmitas') ? 'active' : '' }}">
+                    <a href="{{ route('marmitas')}}" class="sidebar-link {{ request()->routeIs('marmitas') ? 'active' : '' }}">
                         <i class="fas fa-box"></i>
                         <span>Marmitas</span>
                     </a>
