@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MarmitasController;
 use Illuminate\Routing\RouteRegistrar;
 
 //Rota inicial, Primeira pagina quando o cliente entra no site.
@@ -46,10 +47,13 @@ Route::prefix('/home')->middleware('auth')->group(function(){
     });
 
     Route::prefix('/marmitas')->group(function(){
-        Route::get('/', function(){
-            return 'CRUD marmitas';
+        Route::get('/', [MarmitasController::class, 'showMarmitas'])->name('marmitas');
+        Route::get('/create', [MarmitasController::class, 'showCadastro'])->name('marmitas.create');
+        Route::post('/create', [MarmitasController::class, 'create'])->name('marmita.create');
+        Route::get('/{marmita}/update', [MarmitasController::class, 'showUpdate'])->name('marmitas.update');
+        Route::put('/{marmita}/update', [MarmitasController::class, 'update'])->name('marmita.update');
+        Route::delete('/{id}/delete', [MarmitasController::class, 'destroy'])->name('marmitas.destroy');
         });
-    });
 
     Route::prefix('/reservas')->group(function(){
         Route::get('/', function(){
