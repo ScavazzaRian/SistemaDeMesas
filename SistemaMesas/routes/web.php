@@ -37,6 +37,10 @@ Route::prefix('/home')->middleware('auth')->group(function(){
         });
     });
 
+    Route::get('/relatorios', function(){
+        return view('app.relatorio.relatorio');
+    })->name('relatorios');
+
     Route::prefix('/produtos')->group(function(){
         Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
         Route::get('/create', [ProdutosController::class, 'showCadastro'])->name('produtos.create');
