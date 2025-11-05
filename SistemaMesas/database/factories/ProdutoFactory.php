@@ -17,7 +17,7 @@ class ProdutoFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => fake()->randomElement([
+            'nome' => fake()->unique()->randomElement([
             'Coca-Cola Lata',
             'Pizza Calabresa',
             'Lasanha Bolonhesa',

@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ProdutosSeeder::class,
             MarmitasSeeder::class,
+            MesaSeeder::class,
+            MesaProdutosSeeder::class
         ]);
     }
 }
