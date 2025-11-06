@@ -8,17 +8,17 @@ services:
     working_dir: /var/www/SistemaMesas
     volumes:
       - ./SistemaMesas:/var/www/SistemaMesas
+    env_file:
+      - ./SistemaMesas/.env
     environment:
-      - COMPOSER_HOME=/composer
-      - COMPOSER_ALLOW_SUPERUSER=1
-      - APP_ENV=local
-      - APP_KEY=base64:hnNhhCKZRfzOOASgqAesMpO9kbpXqqnji3pgJl1BW34=
-      - DB_CONNECTION=pgsql
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_DATABASE=restaurante
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=1234
+      COMPOSER_HOME: /composer
+      COMPOSER_ALLOW_SUPERUSER: 1
+      APP_ENV: local
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: restaurante
+      DB_USERNAME: postgres
     #Aplicao só sobe se a gente tiver os conteiner do banco
     depends_on:
       - db
