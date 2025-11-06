@@ -33,10 +33,6 @@ Route::prefix('/home')->middleware('auth')->group(function(){
     Route::get('/create', [HomeController::class, 'showCadastroMesas'])->name('mesas.create');
     Route::delete('/{id}/delete', [HomeController::class, 'destroyMesas'])->name('mesas.destroy');
 
-    Route::get('/relatorios', function(){
-        return view('app.relatorio.relatorio');
-    })->name('relatorios');
-
     Route::prefix('/produtos')->group(function(){
         Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
         Route::get('/create', [ProdutosController::class, 'showCadastro'])->name('produtos.create');
@@ -61,4 +57,7 @@ Route::prefix('/home')->middleware('auth')->group(function(){
         });
     });
 
+    Route::get('/relatorios', function(){
+        return view('app.relatorio.relatorio');
+    })->name('relatorios');
 });
