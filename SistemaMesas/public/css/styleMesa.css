@@ -1,0 +1,116 @@
+/* Gerenciador de Mesas - Estilos */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+.subtitle {
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+.btn-cadastrar {
+    background-color: #198754;
+    color: white;
+    font-weight: 500;
+}
+
+.btn-cadastrar:hover {
+    background-color: #157347;
+    color: white;
+}
+
+.table-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    color: #495057;
+}
+
+.btn-action {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2px;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    border: none;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #bb2d3b;
+}
+
+.btn-pedido {
+    background-color: #0dcaf0;
+    border: none;
+}
+
+.btn-pedido:hover {
+    background-color: #0aa2c0;
+}
+
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-livre {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.status-ocupada {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.status-reservada {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+
+.valor-total {
+    color: #198754;
+    font-weight: 600;
+}
+
+.content {
+    min-height: calc(100vh - 56px);
+}
+
+.badge {
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}

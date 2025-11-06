@@ -29,13 +29,9 @@ Route::post('/logout', [UsersController::class, 'logout'])->name('logout.post');
 //Rota principal do site
 Route::prefix('/home')->middleware('auth')->group(function(){
 
-    Route::get('/', [HomeController::class, 'showHome'])->name('home');
-
-    Route::prefix('/mesas')->group(function(){
-        Route::get('/', function(){
-            return 'CRUD mesas';
-        });
-    });
+    Route::get('/', [HomeController::class, 'showMesas'])->name('home');
+    Route::get('/create', [HomeController::class, 'showCadastroMesas'])->name('mesas.create');
+    Route::delete('/{id}/delete', [HomeController::class, 'destroyMesas'])->name('mesas.destroy');
 
     Route::get('/relatorios', function(){
         return view('app.relatorio.relatorio');
