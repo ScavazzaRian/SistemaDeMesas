@@ -26,6 +26,11 @@ class ProdutosController extends Controller
             'preco_compra' => 'nullable|numeric|min:0', 
             'preco_venda'  => 'required|numeric|min:0',
             'quantidade'   => 'required|integer|min:0',
+        ],[
+            'nome.required' => 'Por favor, insira um nome.',
+            'categoria.required' => 'Por favor, selecione uma categoria.',
+            'preco_venda.required' => 'Por favor, informe o valor de venda.',
+            'quantidade.required' => 'Por favor, informe a quantidade de produtos.',
         ]);
 
         $produto->update($validate);

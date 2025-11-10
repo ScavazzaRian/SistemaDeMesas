@@ -23,8 +23,7 @@ class HomeController extends Controller
     public function createMesas(Request $request){
         $validate=$request->validate([
             'numero' => 'required|integer|min:1',
-            'quantidade' => 'required|integer|min:1',
-            'status' => 'required|in:livre,ocupada'
+            'quantidade' => 'required|integer|min:1'
         ]);
 
         Mesa::create($validate);
@@ -33,9 +32,8 @@ class HomeController extends Controller
 
     public function updateMesas(Request $request, Mesa $mesa){
         $validate=$request->validate([
-            'numero' => 'required|integer|min:1',
+            'numero' => 'integer|min:1',
             'quantidade' => 'required|integer|min:1',
-            'status' => 'required|in:livre,ocupada'
         ]);
 
         $mesa->update($validate);

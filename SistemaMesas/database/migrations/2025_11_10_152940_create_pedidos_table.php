@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pedidos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        $table->id();
+        $table->foreignId('mesa_id')->constrained('mesas')->onDelete('cascade');
+        $table->enum('status', ['aberto', 'concluido'])->default('aberto');
+        $table->decimal('total', 8, 2)->default(0.00); 
+        $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      */
