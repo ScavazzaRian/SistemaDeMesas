@@ -7,6 +7,7 @@ use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MarmitasController;
+use App\Http\Controllers\TarefaController;
 use Illuminate\Routing\RouteRegistrar;
 
 //Rota inicial, Primeira pagina quando o cliente entra no site.
@@ -54,6 +55,13 @@ Route::prefix('/home')->middleware('auth')->group(function(){
         Route::delete('/{id}/delete', [MarmitasController::class, 'destroy'])->name('marmitas.destroy');
         });
 
+    Route::get('/relatorios', function(){
+        return view('app.relatorio.relatorio');
+    })->name('relatorios');
+
+    Route::get('relatorios/exportar/produtos', [TarefaController::class, 'exportarProdutos'])->name('exportar.produtos.pdf');
+    Route::get('relatorios/exportar/vendasdia', [TarefaController::class, 'exportarVendasDoDia'])->name('exportar.vendas.dodia.pdf');
+    
     Route::get('/dashboard', function(){
         return view('app.relatorio.dashboard');
     })->name('dashboard');

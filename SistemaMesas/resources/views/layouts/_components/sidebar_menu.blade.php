@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->routeIs('reservas') ? 'active' : '' }}">
+                    <a href="relatorios" class="sidebar-link {{ request()->routeIs('relatorios') ? 'active' : '' }}">
                         <i class="fas fa-chart-bar"></i>
                         <span>Relatórios</span>
                     </a>
