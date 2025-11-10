@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('numero')->unique();
             $table->integer('quantidade')->default(4);
-            $table->enum('status', ['livre', 'ocupada', 'reservada'])->default('livre');
             $table->timestamps();
         });
     }

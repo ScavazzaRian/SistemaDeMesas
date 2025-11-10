@@ -21,7 +21,7 @@
             <div class="mt-3 d-flex gap-2">
                 <input type="text" class="form-control" placeholder="Pesquisar por número de mesa...">
                 <button class="btn btn-success" style="white-space: nowrap;">
-                    <a href=" {{ route('mesas.create')}} " class="btn btn-success" style="white-space: nowrap;">
+                    <a href=" {{ route('mesas.show.create')}} " class="btn btn-success" style="white-space: nowrap;">
                         <i class="fas fa-plus"></i> Cadastrar
                     </a>
                 </button>
@@ -37,7 +37,6 @@
                             <th>ID</th>
                             <th>Número Mesa</th>
                             <th>Capacidade</th>
-                            <th>Status</th>
                             <th>Valor Total</th>
                             <th>Cliente</th>
                             <th width="200">Ações</th>
@@ -48,16 +47,7 @@
                             <tr style="background-color: {{ $loop->even ? '#f8f9fa' : 'white' }};">
                                 <td><strong>{{ $mesa->id }}</strong></td>
                                 <td><strong>{{ $mesa->numero }}</strong></td>
-                                <td>{{ $mesa->capacidade }} pessoas</td>
-                                <td>
-                                    @if($mesa->status == 'livre')
-                                        <span class="badge" style="background-color: #27ae60; color: white;">Livre</span>
-                                    @elseif($mesa->status == 'ocupada')
-                                        <span class="badge" style="background-color: #e74c3c; color: white;">Ocupada</span>
-                                    @else
-                                        <span class="badge" style="background-color: #f39c12; color: white;">Reservada</span>
-                                    @endif
-                                </td>
+                                <td>{{ $mesa->quantidade }} pessoas</td>
                                 <td><strong style="color: #27ae60;">R$ {{ number_format($mesa->valor_total ?? 0, 2, ',', '.') }}</strong></td>
                                 <td>{{ $mesa->cliente ?? '-' }}</td>
                                 <td>
@@ -71,7 +61,7 @@
                                         
                                         <!-- Botão Editar -->
                                         <button class="btn btn-sm" style="background-color: #f39c12; color: white;" title="Editar">
-                                            <a href="#" style="color: inherit; text-decoration: none;">
+                                            <a href="{{route('mesas.show.update', $mesa)}}" style="color: inherit; text-decoration: none;">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </button>

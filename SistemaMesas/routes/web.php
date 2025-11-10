@@ -30,7 +30,10 @@ Route::post('/logout', [UsersController::class, 'logout'])->name('logout.post');
 Route::prefix('/home')->middleware('auth')->group(function(){
 
     Route::get('/', [HomeController::class, 'showMesas'])->name('home');
-    Route::get('/create', [HomeController::class, 'showCadastroMesas'])->name('mesas.create');
+    Route::get('/create', [HomeController::class, 'showCadastroMesas'])->name('mesas.show.create');
+    Route::get('/{mesa}/update', [HomeController::class, 'showEditMesa'])->name('mesas.show.update');
+    Route::put('/{mesa}/update', [HomeController::class, 'updateMesas'])->name('mesas.update');
+    Route::post('/create', [HomeController::class, 'createMesas'])->name('mesas.create');
     Route::delete('/{id}/delete', [HomeController::class, 'destroyMesas'])->name('mesas.destroy');
 
     Route::prefix('/produtos')->group(function(){
@@ -57,7 +60,7 @@ Route::prefix('/home')->middleware('auth')->group(function(){
         });
     });
 
-    Route::get('/relatorios', function(){
-        return view('app.relatorio.relatorio');
+    Route::get('/dashnoard', function(){
+        return view('app.relatorio.dashboard');
     })->name('relatorios');
 });

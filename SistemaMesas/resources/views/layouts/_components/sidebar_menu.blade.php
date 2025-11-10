@@ -44,8 +44,8 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link {{ request()->routeIs('reservas') ? 'active' : '' }}">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Reservas</span>
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Relatórios</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -53,14 +53,8 @@
                         class="sidebar-link has-dropdown"
                         data-bs-target="#relatorios" aria-expanded="false"
                         aria-controls="relatorios">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Relatórios</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->routeIs('configuracoes') ? 'active' : '' }}">
-                        <i class="fas fa-cog"></i>
-                        <span>Configurações</span>
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
             </ul>

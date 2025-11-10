@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastrar Mesa</title>
+    <title>Editar Mesa</title>
 </head>
 <body>
     @component('layouts._components.sidebar_menu')
@@ -14,15 +14,16 @@
     <div class="content p-4">
         <!-- Header -->
         <div class="mb-4">
-            <h1>Cadastrar Mesa</h1>
-            <p class="text-muted">Adicione uma nova mesa ao sistema</p>
+            <h1>Editar Mesa #{{ $mesa->numero }}</h1>
+            <p class="text-muted">Atualize as informações da mesa</p>
         </div>
 
         <!-- Card do Formulário -->
         <div class="card shadow-sm">
             <div class="card-body">
-                <form action="#" method="POST">
+                <form action="{{route('mesas.update', $mesa)}}" method="POST">
                     @csrf
+                    @method('PUT')
                     
                     <div class="row">
                         <!-- Número da Mesa -->
@@ -34,7 +35,7 @@
                                 id="numero" 
                                 name="numero" 
                                 placeholder="Ex: 1, 2, 3..."
-                                value="{{ old('numero') }}"
+                                value="{{ old('numero', $mesa->numero) }}"
                                 required
                                 min="1">
                             @error('numero')
@@ -52,7 +53,7 @@
                                 id="quantidade" 
                                 name="quantidade" 
                                 placeholder="Ex: 2, 4, 6..."
-                                value="{{ old('quantidade', 4) }}"
+                                value="{{ old('quantidade', $mesa->quantidade) }}"
                                 required
                                 min="1"
                                 max="20">
@@ -62,19 +63,20 @@
                             <small class="text-muted">Número de pessoas que a mesa comporta</small>
                         </div>
                     </div>
-
+                    
                     <hr class="my-4">
 
                     <!-- Botões -->
                     <div class="d-flex gap-2">
-                        <a href="{{route('mesas.create')}}">
-                            <button type="submit" class="btn btn-success">
-                            <i class="fas fa-save"></i> Salvar Mesa
-                            </button>
-                        </a>
-                        <a href="{{route('home')}}" class="btn btn-secondary">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Atualizar Mesa
+                        </button>
+                        <a href="{{ route('home') }}" class="btn btn-secondary">
                             <i class="fas fa-arrow-left"></i> Voltar
                         </a>
+                        <button type="button" class="btn btn-danger ms-auto" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                            <i class="fas fa-trash"></i> Excluir Mesa
+                        </button>
                     </div>
                 </form>
             </div>
@@ -97,6 +99,29 @@
         @endif
     </div>
 
+    <!-- Modal de Confirmação de Exclusão -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Tem certeza que deseja excluir a Mesa #{{ $mesa->numero }}? Esta ação não pode ser desfeita.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form action="{{ route('mesas.destroy', $mesa->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Sim, Excluir</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <style>
         .card {
             border: none;
@@ -114,6 +139,10 @@
         
         .btn {
             font-weight: 500;
+        }
+
+        .ms-auto {
+            margin-left: auto;
         }
     </style>
 </body>

@@ -16,6 +16,32 @@ class HomeController extends Controller
         return view('app.home.cadastro');
     }
 
+    public function showEditMesa(Mesa $mesa){
+        return view('app.home.editar', compact('mesa'));
+    }
+
+    public function createMesas(Request $request){
+        $validate=$request->validate([
+            'numero' => 'required|integer|min:1',
+            'quantidade' => 'required|integer|min:1',
+            'status' => 'required|in:livre,ocupada'
+        ]);
+
+        Mesa::create($validate);
+        return redirect()->route('home');
+    }
+
+    public function updateMesas(Request $request, Mesa $mesa){
+        $validate=$request->validate([
+            'numero' => 'required|integer|min:1',
+            'quantidade' => 'required|integer|min:1',
+            'status' => 'required|in:livre,ocupada'
+        ]);
+
+        $mesa->update($validate);
+        return redirect()->route('home');
+    }
+
     public function destroyMesas($id){
         Mesa::destroy($id);
         return redirect()->route('home');
