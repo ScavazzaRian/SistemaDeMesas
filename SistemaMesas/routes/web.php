@@ -54,13 +54,7 @@ Route::prefix('/home')->middleware('auth')->group(function(){
         Route::delete('/{id}/delete', [MarmitasController::class, 'destroy'])->name('marmitas.destroy');
         });
 
-    Route::prefix('/reservas')->group(function(){
-        Route::get('/', function(){
-            return 'CRUD reservas';
-        });
-    });
-
-    Route::get('/dashnoard', function(){
+    Route::get('/dashboard', function(){
         return view('app.relatorio.dashboard');
-    })->name('relatorios');
+    })->name('dashboard');
 });

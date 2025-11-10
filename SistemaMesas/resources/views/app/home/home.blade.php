@@ -37,8 +37,6 @@
                             <th>ID</th>
                             <th>Número Mesa</th>
                             <th>Capacidade</th>
-                            <th>Valor Total</th>
-                            <th>Cliente</th>
                             <th width="200">Ações</th>
                         </tr>
                     </thead>
@@ -48,8 +46,6 @@
                                 <td><strong>{{ $mesa->id }}</strong></td>
                                 <td><strong>{{ $mesa->numero }}</strong></td>
                                 <td>{{ $mesa->quantidade }} pessoas</td>
-                                <td><strong style="color: #27ae60;">R$ {{ number_format($mesa->valor_total ?? 0, 2, ',', '.') }}</strong></td>
-                                <td>{{ $mesa->cliente ?? '-' }}</td>
                                 <td>
                                     <div class="d-flex gap-2">
                                         <!-- Botão Adicionar Pedido -->

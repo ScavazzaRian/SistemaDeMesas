@@ -49,10 +49,8 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{ route('relatorios') }}"
-                        class="sidebar-link has-dropdown"
-                        data-bs-target="#relatorios" aria-expanded="false"
-                        aria-controls="relatorios">
+                    <a href="{{route('dashboard')}}" 
+                        class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>

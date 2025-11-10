@@ -11,15 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservas', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('mesa_id');
-            $table->string('nome_cliente');
-            $table->string('telefone', 20);
-            $table->enum('status', ['pendente', 'confirmada', 'cancelada'])->default('pendente');
             $table->timestamps();
-
-            $table->foreign("mesa_id")->references('id')->on('mesas');
         });
     }
 
@@ -28,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservas');
+        Schema::dropIfExists('pedidos');
     }
 };
