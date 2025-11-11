@@ -16,8 +16,6 @@ class TarefaController extends Controller
     }
 
     public function exportarVendasDoDia(){
-        // Usando DB::select com a sintaxe SQL corrigida.
-        // Note que a consulta agora busca os itens de pedido e junta com a tabela de produtos.
         $vendas = DB::select("
             SELECT
                 p.id  as pedido_id,
@@ -91,7 +89,7 @@ class TarefaController extends Controller
                 pedidos p 
             WHERE 
                 p.created_at between ? AND ?
-                AND p.status = 'aberto' 
+                AND p.status = 'concluido' 
             ORDER BY 
                 p.id
         ", [$validate['data_inicio'], $validate['data_fim']  . ' 23:59:59']);
