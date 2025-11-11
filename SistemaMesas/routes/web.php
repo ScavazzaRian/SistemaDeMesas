@@ -9,6 +9,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MarmitasController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\TarefaController;
+use App\Models\Pedido;
 use Illuminate\Routing\RouteRegistrar;
 
 //Rota inicial, Primeira pagina quando o cliente entra no site.
@@ -42,6 +43,8 @@ Route::prefix('/home')->middleware('auth')->group(function(){
 
     Route::prefix('pedidos')->group(function(){
         Route::get('/', [PedidoController::class, 'showPedidos'])->name('pedidos');
+        Route::delete('/{id}/delete', [PedidoController::class, 'destroyPedido'])->name('pedidos.destroy');
+        Route::put('/{pedido}/concluir', [PedidoController::class, 'concluirPedido'])->name('pedidos.concluir');
     });
 
     Route::prefix('/produtos')->group(function(){

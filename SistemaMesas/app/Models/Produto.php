@@ -15,4 +15,8 @@ class Produto extends Model
         'quantidade',
         'categoria'
     ];
+
+    public function pedidosRelacao(){
+        return $this->hasMany(PedidoProduto::class);
+    }
 }

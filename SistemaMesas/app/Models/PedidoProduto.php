@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class PedidoProduto extends Model
 {
     use HasFactory;
+    
+    public function pedido(){
+        return $this->belongsTo(Pedido::class);
+    }
+
+    public function produto(){
+        return $this->belongsTo(Produto::class);
+    }
 }
