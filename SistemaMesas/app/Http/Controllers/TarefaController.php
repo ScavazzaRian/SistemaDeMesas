@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class TarefaController extends Controller
@@ -40,5 +41,38 @@ class TarefaController extends Controller
         $pdf = PDF::loadView('app.relatorio.reldiario', compact('vendas', 'totalVendas'));
 
         return $pdf->stream('relatorio_de_vendas.pdf');
+    }
+
+    public function exportarVendasDoMes(){
+        $mes = now()->month;
+        $ano = now()->year;
+
+        $vendas = DB::select("
+            SELECT
+                pp.pedido_id  as pedido_id,
+                pr.nome as produto_nome,
+                pp.quantidade as quantidade,
+                pp.preco_unitario_vendido as valor_liquido_unitario,
+                (pp.quantidade * pp.preco_unitario_vendido) as valor_total_item
+            FROM 
+                pedido_produtos pp
+            JOIN pedidos p on p.id = pp.pedido_id 
+            JOIN produtos pr on pp.produto_id  = pr.id
+            WHERE 
+                EXTRACT(MONTH FROM CAST(p.created_at AS timestamp)) = ?
+                AND EXTRACT(YEAR FROM CAST(p.created_at AS timestamp)) = ? 
+        ", [$mes, $ano]);
+
+        $totalVendas = 0;
+        foreach($vendas as $venda){
+            $totalVendas += $venda->valor_total_item;
+        }
+
+        $pdf = PDF::loadView('app.relatorio.relmes', compact('vendas', 'totalVendas'));
+        return $pdf->stream('relatorio_de_vendas_mes.pdf');
+    }
+
+    public function exportarABC(){
+        $produto=DB::select('');
     }
 }

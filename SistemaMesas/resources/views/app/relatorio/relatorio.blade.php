@@ -43,7 +43,7 @@
                         <td>
                             <div class="d-flex gap-2">
                                 <!-- Botão PDF -->
-                                <a href="{{route('exportar.vendas.dodia.pdf')}}" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
+                                <a href="{{route('exportar.vendas.dodia.pdf')}}" target="_blank" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
                                     <i class="fas fa-file-pdf"></i> Gerar PDF
                                 </a>
                             </div>
@@ -57,7 +57,7 @@
                         <td>
                             <div class="d-flex gap-2">
                                 <!-- Botão PDF -->
-                                <a href="#" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
+                                <a href="{{route('exportar.vendas.mes.pdf')}}" target="_blank" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
                                     <i class="fas fa-file-pdf"></i> Gerar PDF
                                 </a>
                             </div>
@@ -71,7 +71,7 @@
                         <td>
                             <div class="d-flex gap-2">
                                 <!-- Botão PDF -->
-                                <a href="{{route('exportar.produtos.pdf')}}" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
+                                <a href="{{route('exportar.produtos.pdf')}}" target="_blank" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
                                     <i class="fas fa-file-pdf"></i> Gerar PDF
                                 </a>
                             </div>
@@ -85,7 +85,7 @@
                         <td>
                             <div class="d-flex gap-2">
                                 <!-- Botão PDF -->
-                                <a href="#" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
+                                <a href="#" target="_blank" class="btn btn-sm btn-danger" style="color: white; text-decoration: none;" title="Gerar PDF">
                                     <i class="fas fa-file-pdf"></i> Gerar PDF
                                 </a>
                             </div>
