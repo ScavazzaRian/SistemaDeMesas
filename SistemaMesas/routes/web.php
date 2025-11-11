@@ -55,14 +55,13 @@ Route::prefix('/home')->middleware('auth')->group(function(){
         Route::delete('/{id}/delete', [MarmitasController::class, 'destroy'])->name('marmitas.destroy');
         });
 
-    Route::get('/relatorios', function(){
-        return view('app.relatorio.relatorio');
-    })->name('relatorios');
-
-    Route::get('relatorios/exportar/produtos', [TarefaController::class, 'exportarProdutos'])->name('exportar.produtos.pdf');
-    Route::get('relatorios/exportar/vendasdia', [TarefaController::class, 'exportarVendasDoDia'])->name('exportar.vendas.dodia.pdf');
-    Route::get('relatorios/exportar/vendasmes', [TarefaController::class, 'exportarVendasDoMes'])->name('exportar.vendas.mes.pdf');
-    Route::post('relatorios/exportar/periodo', [TarefaController::class, 'relPorPeriodo'])->name('exportar.periodo.pdf');
+    Route::prefix('/relatorios')->group(function(){
+        Route::get('/', [TarefaController::class, 'showRelatorio'])->name('relatorios');
+        Route::get('relatorios/exportar/produtos', [TarefaController::class, 'exportarProdutos'])->name('exportar.produtos.pdf');
+        Route::get('relatorios/exportar/vendasdia', [TarefaController::class, 'exportarVendasDoDia'])->name('exportar.vendas.dodia.pdf');
+        Route::get('relatorios/exportar/vendasmes', [TarefaController::class, 'exportarVendasDoMes'])->name('exportar.vendas.mes.pdf');
+        Route::post('relatorios/exportar/periodo', [TarefaController::class, 'relPorPeriodo'])->name('exportar.periodo.pdf');        
+    });
     
     Route::get('/dashboard', function(){
         return view('app.relatorio.dashboard');

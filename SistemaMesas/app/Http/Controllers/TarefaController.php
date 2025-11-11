@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class TarefaController extends Controller
 {
+    public function showRelatorio(){
+        return view('app.relatorio.relatorio');
+    }
+
     public function exportarProdutos(){
         $produtos = Produto::orderBy('id', 'asc')->get();
         $pdf = PDF::loadView('app.relatorio.relproduto', ['produtos' => $produtos]);
