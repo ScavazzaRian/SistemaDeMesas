@@ -7,6 +7,7 @@ use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MarmitasController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\TarefaController;
 use Illuminate\Routing\RouteRegistrar;
 
@@ -30,12 +31,18 @@ Route::post('/logout', [UsersController::class, 'logout'])->name('logout.post');
 //Rota principal do site
 Route::prefix('/home')->middleware('auth')->group(function(){
 
-    Route::get('/', [HomeController::class, 'showMesas'])->name('home');
-    Route::get('/create', [HomeController::class, 'showCadastroMesas'])->name('mesas.show.create');
-    Route::get('/{mesa}/update', [HomeController::class, 'showEditMesa'])->name('mesas.show.update');
-    Route::put('/{mesa}/update', [HomeController::class, 'updateMesas'])->name('mesas.update');
-    Route::post('/create', [HomeController::class, 'createMesas'])->name('mesas.create');
-    Route::delete('/{id}/delete', [HomeController::class, 'destroyMesas'])->name('mesas.destroy');
+    Route::prefix('/mesas')->group(function(){
+        Route::get('/', [HomeController::class, 'showMesas'])->name('home');
+        Route::get('/create', [HomeController::class, 'showCadastroMesas'])->name('mesas.show.create');
+        Route::get('/{mesa}/update', [HomeController::class, 'showEditMesa'])->name('mesas.show.update');
+        Route::put('/{mesa}/update', [HomeController::class, 'updateMesas'])->name('mesas.update');
+        Route::post('/create', [HomeController::class, 'createMesas'])->name('mesas.create');
+        Route::delete('/{id}/delete', [HomeController::class, 'destroyMesas'])->name('mesas.destroy');
+    });
+
+    Route::prefix('pedidos')->group(function(){
+        Route::get('/', [PedidoController::class, 'showPedidos'])->name('pedidos');
+    });
 
     Route::prefix('/produtos')->group(function(){
         Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
