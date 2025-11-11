@@ -29,8 +29,8 @@
             <!-- Barra de Pesquisa e Botão Cadastrar -->
             <div class="mt-3 d-flex gap-2">
                 <input type="text" class="form-control" placeholder="Pesquisar por id dos pedidos...">
-                <a href="{{ route('produtos.create') }}" class="btn btn-success" style="white-space: nowrap;">
-                    <i class="fas fa-plus"></i> Cadastrar
+                <a href="{{ route('pedido.show.create') }}" class="btn btn-success" style="white-space: nowrap;">
+                    <i class="fas fa-plus"></i> Cadastrar pedido
                 </a>
             </div>
         </div>

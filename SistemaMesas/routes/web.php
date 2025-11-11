@@ -43,8 +43,9 @@ Route::prefix('/home')->middleware('auth')->group(function(){
 
     Route::prefix('pedidos')->group(function(){
         Route::get('/', [PedidoController::class, 'showPedidos'])->name('pedidos');
-        Route::delete('/{id}/delete', [PedidoController::class, 'destroyPedido'])->name('pedidos.destroy');
+        Route::get('/create', [PedidoController::class, 'showCreatePedido'])->name('pedido.show.create');
         Route::put('/{pedido}/concluir', [PedidoController::class, 'concluirPedido'])->name('pedidos.concluir');
+        Route::delete('/{id}/delete', [PedidoController::class, 'destroyPedido'])->name('pedidos.destroy');
     });
 
     Route::prefix('/produtos')->group(function(){
