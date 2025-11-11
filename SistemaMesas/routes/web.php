@@ -62,7 +62,7 @@ Route::prefix('/home')->middleware('auth')->group(function(){
     Route::get('relatorios/exportar/produtos', [TarefaController::class, 'exportarProdutos'])->name('exportar.produtos.pdf');
     Route::get('relatorios/exportar/vendasdia', [TarefaController::class, 'exportarVendasDoDia'])->name('exportar.vendas.dodia.pdf');
     Route::get('relatorios/exportar/vendasmes', [TarefaController::class, 'exportarVendasDoMes'])->name('exportar.vendas.mes.pdf');
-    Route::get('relatorios/exportar/abc', [TarefaController::class, 'exportarABC'])->name('exportar.abc.pdf');
+    Route::post('relatorios/exportar/periodo', [TarefaController::class, 'relPorPeriodo'])->name('exportar.periodo.pdf');
     
     Route::get('/dashboard', function(){
         return view('app.relatorio.dashboard');

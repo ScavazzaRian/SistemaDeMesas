@@ -107,20 +107,20 @@
             <thead>
                 <tr>
                     <th>Pedido ID</th>
-                    <th>Produto</th>
-                    <th class="text-right">Quantidade</th>
-                    <th class="text-right">Valor Unit.</th>
-                    <th class="text-right">Valor Total Item</th>
+                    <th>Mesa ID</th>
+                    <th class="text-right">Status</th>
+                    <th class="text-right">Valor Total</th>
+                    <th class="text-right">Data da Venda</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($vendas as $venda)
                     <tr>
                         <td>{{ $venda->pedido_id }}</td>
-                        <td>{{ $venda->produto_nome }}</td>
-                        <td class="text-right">{{ $venda->quantidade }}</td>
-                        <td class="text-right">R$ {{ number_format($venda->valor_liquido_unitario, 2, ',', '.') }}</td>
-                        <td class="text-right">R$ {{ number_format($venda->valor_total_item, 2, ',', '.') }}</td>
+                        <td>{{ $venda->mesa_id }}</td>
+                        <td class="text-right">{{ $venda->status }}</td>
+                        <td class="text-right">R$ {{ number_format($venda->total, 2, ',', '.') }}</td>
+                        <td class="text-right">R$ {{ $venda->data_venda }}</td>
                     </tr>
                 @endforeach
             </tbody>
