@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class PedidoProduto extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'pedido_id',
+        'produto_id',
+        'quantidade',
+        'preco_unitario_vendido',
+        'subtotal'
+    ];
     
     public function pedido(){
         return $this->belongsTo(Pedido::class);

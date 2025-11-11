@@ -9,8 +9,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MarmitasController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\TarefaController;
-use App\Models\Pedido;
-use Illuminate\Routing\RouteRegistrar;
+use App\Http\Controllers\PedidoProdutoController;
 
 //Rota inicial, Primeira pagina quando o cliente entra no site.
 Route::get('/', [IndexController::class, 'showIndex']) ->name('index');
@@ -43,9 +42,10 @@ Route::prefix('/home')->middleware('auth')->group(function(){
 
     Route::prefix('pedidos')->group(function(){
         Route::get('/', [PedidoController::class, 'showPedidos'])->name('pedidos');
-        Route::get('/create', [PedidoController::class, 'showCreatePedido'])->name('pedido.show.create');
         Route::put('/{pedido}/concluir', [PedidoController::class, 'concluirPedido'])->name('pedidos.concluir');
         Route::delete('/{id}/delete', [PedidoController::class, 'destroyPedido'])->name('pedidos.destroy');
+        Route::get('pedido-produto/create', [PedidoProdutoController::class, 'create'])->name('pedido-produto.create');
+        Route::post('pedido-produto', [PedidoProdutoController::class, 'store'])->name('pedido-produto.store');
     });
 
     Route::prefix('/produtos')->group(function(){
