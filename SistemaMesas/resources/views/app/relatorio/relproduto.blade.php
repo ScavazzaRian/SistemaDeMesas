@@ -60,7 +60,7 @@
                     <td>{{ ucfirst($produto->categoria) }}</td>
                     <td>R$ {{ number_format($produto->preco_venda, 2, ',', '.') }}</td>
                     <td>{{ $produto->quantidade }}</td>
-                    <td>{{ "R$ " . number_format($produto->quantidade * $produto->preco_venda), 2, ',', '.'}}</td>
+                    <td>{{ "R$ " . number_format($produto->quantidade * $produto->preco_venda, 2, ',', '.')}}</td>
                 </tr>
             @endforeach
         </tbody>
