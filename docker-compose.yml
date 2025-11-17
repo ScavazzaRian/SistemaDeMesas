@@ -1,0 +1,52 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: docker/php/Dockerfile
+    container_name: dewtech-app
+    restart: always
+    working_dir: /var/www/SistemaMesas
+    volumes:
+      - ./SistemaMesas:/var/www/SistemaMesas
+    env_file:
+      - ./SistemaMesas/.env
+    environment:
+      COMPOSER_HOME: /composer
+      COMPOSER_ALLOW_SUPERUSER: 1
+      APP_ENV: local
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: restaurante
+      DB_USERNAME: postgres
+    #Aplicao só sobe se a gente tiver os conteiner do banco
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:1.25.1-alpine-slim
+    container_name: dewtech-nginx
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./SistemaMesas:/var/www/SistemaMesas
+      - ./docker/nginx:/etc/nginx/conf.d
+
+  db:
+    build:
+      context: ./
+      dockerfile: docker/db/Dockerfile
+    container_name: dewtech-db
+    restart: always
+    environment:
+      - POSTGRES_DB=restaurante
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:

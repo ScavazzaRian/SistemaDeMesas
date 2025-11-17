@@ -44,13 +44,12 @@ Route::get('/assinatura/status', function () {
 //Rota principal do site
 Route::middleware(['auth'])->prefix('home')->group(function(){
 
-    Route::get('/', [HomeController::class, 'showHome'])->name('home');
-
-    Route::prefix('/mesas')->group(function(){
-        Route::get('/', function(){
-            return 'CRUD mesas';
-        });
-    });
+    Route::get('/', [HomeController::class, 'showMesas'])->name('home');
+    Route::get('/create', [HomeController::class, 'showCadastroMesas'])->name('mesas.show.create');
+    Route::get('/{mesa}/update', [HomeController::class, 'showEditMesa'])->name('mesas.show.update');
+    Route::put('/{mesa}/update', [HomeController::class, 'updateMesas'])->name('mesas.update');
+    Route::post('/create', [HomeController::class, 'createMesas'])->name('mesas.create');
+    Route::delete('/{id}/delete', [HomeController::class, 'destroyMesas'])->name('mesas.destroy');
 
     Route::prefix('/produtos')->group(function(){
         Route::get('/', [ProdutosController::class, 'showProdutos'])->name('produtos');
@@ -70,10 +69,7 @@ Route::middleware(['auth'])->prefix('home')->group(function(){
         Route::delete('/{id}/delete', [MarmitasController::class, 'destroy'])->name('marmitas.destroy');
         });
 
-    Route::prefix('/reservas')->group(function(){
-        Route::get('/', function(){
-            return 'CRUD reservas';
-        });
-    });
-
+    Route::get('/dashboard', function(){
+        return view('app.relatorio.dashboard');
+    })->name('dashboard');
 });

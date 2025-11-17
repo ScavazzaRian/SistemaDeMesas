@@ -44,39 +44,15 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link {{ request()->routeIs('reservas') ? 'active' : '' }}">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span>Reservas</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#"
-                        class="sidebar-link has-dropdown collapsed {{ request()->routeIs('relatorios*') ? 'active' : '' }}"
-                        data-bs-toggle="collapse" data-bs-target="#relatorios" aria-expanded="false"
-                        aria-controls="relatorios">
                         <i class="fas fa-chart-bar"></i>
                         <span>Relatórios</span>
                     </a>
-                    <ul id="relatorios" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#"
-                                class="sidebar-link {{ request()->routeIs('relatorios.vendas') ? 'active' : '' }}">
-                                <i class="fas fa-dollar-sign"></i>
-                                Vendas
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#"
-                                class="sidebar-link {{ request()->routeIs('relatorios.estoque') ? 'active' : '' }}">
-                                <i class="fas fa-warehouse"></i>
-                                Estoque
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->routeIs('configuracoes') ? 'active' : '' }}">
-                        <i class="fas fa-cog"></i>
-                        <span>Configurações</span>
+                    <a href="{{route('dashboard')}}" 
+                        class="sidebar-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
             </ul>
