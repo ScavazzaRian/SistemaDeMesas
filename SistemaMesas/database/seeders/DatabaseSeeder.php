@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
         //Descomentar codigo caso queira usar o db:seed para popular a tabela user e produto
         $this->call([
             UserSeeder::class,
-            ProdutosSeeder::class,
-            MarmitasSeeder::class,
-            MesaSeeder::class,
-            MesaProdutosSeeder::class
+            // ProdutosSeeder::class,
+            // MarmitasSeeder::class,
+            // MesaSeeder::class,
+            // PedidoSeeder::class,
+            // PedidoProdutoSeeder::class,
         ]);
     }
 }

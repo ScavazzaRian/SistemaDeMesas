@@ -1,11 +1,18 @@
 services:
   app:
     build:
-      context: ./
-      dockerfile: docker/php/Dockerfile
+      context: ./SistemaMesas
+      dockerfile: ../docker/php/Dockerfile
     container_name: dewtech-app
     restart: always
     working_dir: /var/www/SistemaMesas
+    command: >
+      sh -c "
+        sleep 5 &&
+        php artisan key:generate --force &&
+        php artisan migrate --force &&
+        php-fpm
+      "
     volumes:
       - ./SistemaMesas:/var/www/SistemaMesas
     env_file:
@@ -19,9 +26,10 @@ services:
       DB_PORT: 5432
       DB_DATABASE: restaurante
       DB_USERNAME: postgres
-    #Aplicao só sobe se a gente tiver os conteiner do banco
     depends_on:
       - db
+    networks:
+      - app-network
 
   nginx:
     image: nginx:1.25.1-alpine-slim
@@ -32,6 +40,10 @@ services:
     volumes:
       - ./SistemaMesas:/var/www/SistemaMesas
       - ./docker/nginx:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - app-network
 
   db:
     build:
@@ -47,6 +59,12 @@ services:
       - "5432:5432"
     volumes:
       - db:/var/lib/postgresql/data
+    networks:
+      - app-network
 
 volumes:
   db:
+
+networks:
+  app-network:
+    driver: bridge

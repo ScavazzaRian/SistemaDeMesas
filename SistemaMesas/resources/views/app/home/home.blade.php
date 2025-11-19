@@ -48,13 +48,6 @@
                                 <td>{{ $mesa->quantidade }} pessoas</td>
                                 <td>
                                     <div class="d-flex gap-2">
-                                        <!-- Botão Adicionar Pedido -->
-                                        <button class="btn btn-sm" style="background-color: #3498db; color: white;" title="Adicionar Pedido">
-                                            <a href="#" style="color: inherit; text-decoration: none;">
-                                                <i class="fas fa-shopping-cart"></i>
-                                            </a>
-                                        </button>
-                                        
                                         <!-- Botão Editar -->
                                         <button class="btn btn-sm" style="background-color: #f39c12; color: white;" title="Editar">
                                             <a href="{{route('mesas.show.update', $mesa)}}" style="color: inherit; text-decoration: none;">

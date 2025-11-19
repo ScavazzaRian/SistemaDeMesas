@@ -25,8 +25,14 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-item">
                     <a href="{{ route('home') }}" class="sidebar-link {{ request()->routeIs('home') ? 'active' : '' }}">
-                        <i class="fas fa-utensils"></i>
+                        <i class="fas fa-home"></i>
                         <span>Mesas</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ route('pedidos') }}" class="sidebar-link {{ request()->routeIs('pedidos') ? 'active' : '' }}">
+                        <i class="fas fa-receipt"></i>
+                        <span>Pedidos</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
@@ -43,7 +49,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link {{ request()->routeIs('reservas') ? 'active' : '' }}">
+                    <a href="relatorios" class="sidebar-link {{ request()->routeIs('relatorios') ? 'active' : '' }}">
                         <i class="fas fa-chart-bar"></i>
                         <span>Relatórios</span>
                     </a>
