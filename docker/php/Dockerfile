@@ -36,9 +36,6 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 # COPIANDO OS ARQUIVOS DO SISTEMA LOCAL PARA O DIRETÓRIO WWW
 COPY --chown=www:www . /var/www/SistemaMesas
 
-# INSTALANDO DEPENDENCIAS DO COMPOSER
-RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts
-
 # AJUSTANDO PERMISSOES
 RUN chown -R www:www /var/www/SistemaMesas
 RUN chmod -R 755 /var/www/SistemaMesas
