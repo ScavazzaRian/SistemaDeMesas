@@ -18,7 +18,7 @@ class AssinaturaController extends Controller
         $client = new PaymentClient();
 
         $payment = $client->create([
-            "transaction_amount" => 0.01,
+            "transaction_amount" => 60.00,
             "description" => "Assinatura Premium",
             "payment_method_id" => "pix",
             "external_reference" => Auth::id(), // ★ IMPORTANTE ★
@@ -37,6 +37,8 @@ class AssinaturaController extends Controller
 
     public function webhook(Request $request)
     {
+        Log::info("WEBHOOK RECEBIDO", $request->all());
+
         // ID do pagamento enviado pelo MP
         $paymentId = $request->input('data.id');
 

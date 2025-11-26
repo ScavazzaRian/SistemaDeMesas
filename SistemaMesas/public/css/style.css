@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -13,7 +14,7 @@ html, body {
     width: 280px;
     height: 280px;
     border-radius: 18px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
 /* ======== TEXTAREA DO PIX ======== */
@@ -43,8 +44,10 @@ html, body {
     top: 20px;
     left: 20px;
 
-    background-color: #f2d6d6; /* cor clara */
-    color: #5D1515;           /* cor do tema */
+    background-color: #f2d6d6;
+    /* cor clara */
+    color: #5D1515;
+    /* cor do tema */
     border: 2px solid #5D1515;
 
     padding: 0.6rem 1.4rem;
@@ -56,18 +59,51 @@ html, body {
 
     cursor: pointer;
     transition: 0.3s ease;
-    z-index: 9999; /* sempre por cima */
+    z-index: 9999;
+    /* sempre por cima */
 }
 
 .btn-voltar:hover {
     background-color: #5D1515;
     color: #fff;
     transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .btn-voltar:active {
     transform: scale(0.97);
 }
 
+.btn-top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 
+    background-color: #f2d6d6;
+    /* cor clara */
+    color: #5D1515;
+    /* cor do tema */
+    border: 2px solid #5D1515;
+
+    padding: 0.6rem 1.4rem;
+    border-radius: 12px;
+
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+.btn-top-right:hover {
+    background-color: #5D1515;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.btn-top-right:active {
+    transform: scale(0.97);
+}

@@ -37,6 +37,14 @@
 
             <a href="{{ route('login') }}" class="btn-voltar">← Voltar</a>
 
+            <form method="POST" action="{{ route('ativar.assinatura') }}" style="position: absolute; top: 20px; right: 20px;">
+                @csrf
+                <button type="submit" class="btn-top-right">
+                    Ativar e Ir para Pedidos
+                </button>
+            </form>
+
+
         </div>
 
     </div>
@@ -52,14 +60,13 @@
     }
 
     setInterval(() => {
-    fetch("/assinatura/status")
-        .then(r => r.json())
-        .then(data => {
-            if (data.status === "approved") {
-                window.location.href = "/home";
-            }
-        })
-        .catch(err => console.error("Erro:", err));
-}, 4000);
+        fetch("/check-pagamento")
+            .then(response => response.json())
+            .then(data => {
+                if (data.pagamento_ativo) {
+                    window.location.href = "/home/pedidos"; // ou a página que você quiser
+                }
+            });
+    }, 5000); // verifica a cada 5 segundos
 </script>
 @endsection

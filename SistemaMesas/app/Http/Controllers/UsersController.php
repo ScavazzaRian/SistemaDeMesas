@@ -26,7 +26,7 @@ class UsersController extends Controller
 
         if (Auth::attempt($credenciais)){
             $request->session()->regenerate();
-            return redirect()->route('pedidos');
+            return redirect()->route('assinatura');
         }
 
         return back()->withErrors([
