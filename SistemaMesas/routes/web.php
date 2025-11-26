@@ -14,10 +14,6 @@ use App\Http\Controllers\PedidoProdutoController;
 //Rota inicial, Primeira pagina quando o cliente entra no site.
 Route::get('/', [IndexController::class, 'showIndex']) ->name('index');
 
-//Rota para assinar o site
-// Rota que ira receber a api do mercadopago
-Route::get('/assinatura', [AssinaturaController::class, 'showAssinatura'])->name('assinatura');
-
 //Rota de login
 //Guest -> caso o usuário já esteja autenticado ele redireciona por padrao para o endereco /home
 Route::middleware('guest')->group(function () {
@@ -28,8 +24,28 @@ Route::middleware('guest')->group(function () {
 //Rota de logout
 Route::post('/logout', [UsersController::class, 'logout'])->name('logout.post');
 
+//Rota para assinar o site
+// Rota que ira receber a api do mercadopago
+// web.php
+Route::middleware('auth')->group(function(){
+    Route::get('/pagar', [AssinaturaController::class, 'criarPix'])->name('assinatura');
+});
+Route::post('/webhook/pagamento', [AssinaturaController::class, 'webhook']);
+
+Route::get('/assinatura/status', function () {
+    $user = auth()->user();
+
+    if (!$user) {
+        return response()->json(['status' => 'unauthenticated']);
+    }
+
+    return response()->json([
+        'status' => $user->pagamento_ativo ? 'approved' : 'pending'
+    ]);
+})->middleware('auth');
+
 //Rota principal do site
-Route::prefix('/home')->middleware('auth')->group(function(){
+Route::middleware(['auth'])->prefix('home')->group(function(){
 
     Route::prefix('/mesas')->group(function(){
         Route::get('/', [HomeController::class, 'showMesas'])->name('home');
