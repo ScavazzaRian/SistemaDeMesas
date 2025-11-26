@@ -26,6 +26,11 @@ Route::middleware('guest')->group(function () {
 //Rota de logout
 Route::post('/logout', [UsersController::class, 'logout'])->name('logout.post');
 
+Route::middleware('guest')->group(function() {
+    Route::get('/cadastro', [UsersController::class, 'showCreateUser'])->name('cadastrar');
+    Route::post('/cadastro', [UsersController::class, 'createUser'])->name('cadastrar.post');
+});
+
 //Rota para assinar o site
 // Rota que ira receber a api do mercadopago
 // web.php
