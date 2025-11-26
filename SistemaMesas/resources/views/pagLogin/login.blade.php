@@ -42,9 +42,11 @@
             </div>
             <div class="text-center pt-3 border-top">
                 <p class="text-muted mb-3">Ainda não é assinante?</p>
-                <button type="button" class="btn btn-outline-custom">
-                    Assine Agora
-                </button>
+                <a href="{{route('cadastrar')}}">
+                    <button type="button" class="btn btn-outline-custom">
+                        Assine Agora
+                    </button>
+                </a>
             </div>
             </form>
         </div>

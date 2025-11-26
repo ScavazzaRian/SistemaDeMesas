@@ -17,8 +17,19 @@ Para garantir o funcionamento correto do projeto, os seguintes componentes devem
 Siga os passos abaixo para configurar o projeto:
 
 1.  **Variáveis de Ambiente:**
-    Configure o arquivo `.env` na raiz do projeto para apontar para o seu banco de dados. Um exemplo de configuração para SQLite seria:
+    Primeiro, copie o arquivo de exemplo `.env.example` para criar seu próprio arquivo de configuração `.env`:
+    ```bash
+    cp .env.example .env
+    ```
 
+2.  **Chave da Aplicação:**
+    Gere a chave da aplicação, que é essencial para a segurança:
+    ```bash
+    php artisan key:generate
+    ```
+
+3.  **Configuração do Banco de Dados:**
+    Agora, configure o arquivo `.env` para apontar para o seu banco de dados. Um exemplo de configuração para SQLite seria:
     ```dotenv
     DB_CONNECTION=sqlite
     DB_DATABASE=/path/to/your/database.sqlite
@@ -31,7 +42,7 @@ Siga os passos abaixo para configurar o projeto:
     # DB_PASSWORD=
     ```
 
-2.  **Migrações do Banco de Dados:**
+4.  **Migrações do Banco de Dados:**
     Execute o comando abaixo para criar as tabelas necessárias no banco de dados:
 
     ```bash
@@ -53,4 +64,3 @@ Após a configuração, você pode iniciar a aplicação:
     Abra seu navegador e acesse o endereço:
 
     [http://localhost:8000](http://localhost:8000)
-

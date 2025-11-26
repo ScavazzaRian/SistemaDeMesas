@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,6 +13,22 @@ class UsersController extends Controller
     
     public function showLogin(){
         return view('pagLogin.login');
+    }
+
+    public function showCreateUser(){
+        return view('pagLogin.cadastrar');
+    }
+
+    public function createUser(Request $request){
+        $validate = $request->validate([
+            'name' => 'required|string|min:1',
+            'email' => 'required|string|email',
+            'password' => 'required|min:1|max:255',
+        ]);
+
+        User::create($validate);
+        
+        return redirect()->route('login');
     }
 
     public function login(Request $request){

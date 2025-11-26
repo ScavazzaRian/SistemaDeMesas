@@ -18,8 +18,8 @@
 
     <h2 class="register-title">Criar Conta</h2>
 
-    <form action="{{ route('register.post') }}" method="POST">
-
+    <form action="{{ route('cadastrar.post') }}" method="POST">
+        @csrf
         <!-- Nome -->
         <div class="mb-3">
             <label class="form-label">Nome Completo</label>
@@ -39,9 +39,8 @@
         </div>
 
         <button type="submit" class="btn btn-register">Cadastrar</button>
-
-        <a href="{{ route('login') }}" class="register-link">Já tenho conta</a>
     </form>
+    <a href="{{ route('login') }}" class="register-link">Já tenho conta</a>
 </div>
 
 </body>
