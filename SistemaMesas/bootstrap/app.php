@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Middleware\CheckAssinatura;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use PHPUnit\TextUI\Configuration\Php;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -11,7 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+        'pagamento' => \App\Http\Middleware\CheckAssinatura::class,
+    ]);
+    $middleware->statefulApi([
+        '/webhook'
+    ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

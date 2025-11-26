@@ -10,6 +10,8 @@ use App\Http\Controllers\MarmitasController;
 use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\TarefaController;
 use App\Http\Controllers\PedidoProdutoController;
+use Illuminate\Support\Facades\Auth;
+
 
 //Rota inicial, Primeira pagina quando o cliente entra no site.
 Route::get('/', [IndexController::class, 'showIndex']) ->name('index');
@@ -32,20 +34,22 @@ Route::middleware('auth')->group(function(){
 });
 Route::post('/webhook/pagamento', [AssinaturaController::class, 'webhook']);
 
-Route::get('/assinatura/status', function () {
-    $user = auth()->user();
-
-    if (!$user) {
-        return response()->json(['status' => 'unauthenticated']);
-    }
-
+Route::get('/check-pagamento', function () {
     return response()->json([
-        'status' => $user->pagamento_ativo ? 'approved' : 'pending'
+        'pagamento_ativo' => Auth::user()->pagamento_ativo
     ]);
 })->middleware('auth');
 
+Route::post('/ativar-assinatura', function () {
+    $user = Auth::user();
+    $user->pagamento_ativo = true;
+    $user->save();
+
+    return redirect()->route('pedidos')->with('success', 'Assinatura ativada com sucesso!');
+})->middleware('auth')->name('ativar.assinatura');
+
 //Rota principal do site
-Route::middleware(['auth'])->prefix('home')->group(function(){
+Route::middleware(['auth', 'pagamento'])->prefix('home')->group(function(){
 
     Route::prefix('/mesas')->group(function(){
         Route::get('/', [HomeController::class, 'showMesas'])->name('home');
